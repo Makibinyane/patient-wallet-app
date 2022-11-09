@@ -96,8 +96,9 @@ public class MedicalRecordActivity extends AppCompatActivity {
 
                 @Override
                 public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                    if (menuItem.getItemId() == R.id.settings) {
-                        //fetchAndShowPointsOfInterests(menuItem.toString());
+                    if (menuItem.getItemId() == R.id.logout) {
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
                     } else if (menuItem.getItemId() == R.id.profile) {
                         Intent intent = new Intent(getApplicationContext(), ProfileManagementActivity.class);
                         intent.putExtra("patient", patient);

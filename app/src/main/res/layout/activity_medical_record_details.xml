@@ -13,6 +13,7 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -80,10 +81,23 @@
             android:layout_marginTop="4dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtMedicalRecordBloodPressure"
             tools:text="Pills" />
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Share"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtMedicalRecordPrescription"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

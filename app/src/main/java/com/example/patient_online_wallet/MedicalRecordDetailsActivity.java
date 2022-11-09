@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MedicalRecordDetailsActivity extends AppCompatActivity {
@@ -20,6 +22,8 @@ public class MedicalRecordDetailsActivity extends AppCompatActivity {
         TextView tvBP = findViewById(R.id.txtMedicalRecordBloodPressure);
         TextView tvSugarLevel = findViewById(R.id.txtMedicalRecordSugarLevel);
         TextView tvPrescription = findViewById(R.id.txtMedicalRecordPrescription);
+
+        Button btnShare = findViewById(R.id.btnShare);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Medical Record Details");
@@ -44,6 +48,18 @@ public class MedicalRecordDetailsActivity extends AppCompatActivity {
             tvBP.setText(bloodPressure);
             tvSugarLevel.setText(sugarLevel);
             tvPrescription.setText(prescription);
+
+            btnShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Patient Medical Record");
+                    String build = "Title: " + title + "\n" + "Description: " + description + "\n" + "Date: " + date + "\n" + "Sugar level: " + sugarLevel + "\n" + "Blood pressure: " + bloodPressure + "\n" + "Prescription: " + prescription + "\n";
+                    shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, build);
+                    startActivity(Intent.createChooser(shareIntent, "Share via"));
+                }
+            });
         }
     }
 
